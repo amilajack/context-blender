@@ -9,11 +9,7 @@ var defaultOffsets = {
 	height  : 'auto'
 };
 
-if (typeof require==='function' && typeof module==='object'){
-	var canvas = require('canvas');
-	addBlendMethod(canvas.Context2d.prototype);
-	module.exports = canvas;
-} else addBlendMethod(this.CanvasRenderingContext2D && this.CanvasRenderingContext2D.prototype);
+addBlendMethod(this.CanvasRenderingContext2D && this.CanvasRenderingContext2D.prototype)
 
 function addBlendMethod(object){
 	if (!object || typeof object.getImageData!=='function') return console.error("context blender called without a valid context prototype");
